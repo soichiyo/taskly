@@ -35,9 +35,10 @@ const buttonVariants = cva(
 )
 
 export interface ButtonProps
+  // ボタンのサイズやバリエーションを指定するための型
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 

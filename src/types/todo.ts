@@ -12,6 +12,15 @@ export interface Todo {
     completed: boolean;
     createdAt: string;
     updatedAt: string;
+    subTodos?: SubTodo[];
+}
+
+export interface SubTodo {
+    id: string;
+    title: string;
+    completed: boolean;
+    createdAt: string;
+    updatedAt: string;
 }
 
 // Todo作成時の型
@@ -20,6 +29,10 @@ export interface CreateTodoInput {
     description?: string;
     dueDate?: string;
     priority: Priority;
+}
+
+export interface CreateSubTodoInput {
+    title: string;
 }
 
 // フィルターの種類

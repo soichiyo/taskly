@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from "@/components/ui/button";
+import { Button, type ButtonProps } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 type FilterButtonProps = {

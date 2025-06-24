@@ -8,8 +8,8 @@
 // ✅ フォームリセット
 
 import { useState } from "react";
-import type { CreateTodoInput, Priority } from "../types/todo";
-import { Button } from "@/components/ui/button";
+import type { CreateTodoInput, Priority } from "../../../types/todo";
+import { Button } from "../../ui/Button";
 
 interface TodoFormProps {
   onAddTodo: (todoData: CreateTodoInput) => void;

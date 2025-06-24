@@ -9,18 +9,19 @@
 // ✅ 条件付きレンダリング（期限、説明の有無）
 
 import { useState } from "react";
-import type { Todo, Priority } from "../types/todo";
-import { Button } from "@/components/ui/button";
+import type { Todo, Priority } from "../../../types/todo";
+import { Button } from "../../ui/Button";
 
 type TodoItemProps = {
     todo: Todo;
     onToggle: (id: string) => void;
     onDelete: (id: string) => void;
     onUpdate: (id: string, updatedData: Partial<Todo>) => void;
+    onOpenModal: (todo: Todo) => void;
 };
 
 export const TodoItem = (props: TodoItemProps) => {
-    const { todo, onToggle, onDelete, onUpdate } = props;
+    const { todo, onToggle, onDelete, onUpdate, onOpenModal } = props;
     /*
   分割導入という使い方↑、結果（以下の変数が作られる）
   const todo = props.todo;
@@ -165,7 +166,10 @@ export const TodoItem = (props: TodoItemProps) => {
                         />
                         <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                                <span className="font-bold text-lg text-gray-800">
+                                <span
+                                    className="font-bold text-lg text-gray-800 cursor-pointer hover:text-blue-600 transition-colors"
+                                    onClick={() => onOpenModal(todo)}
+                                >
                                     {todo.title}
                                 </span>
                                 <span className={`px-2 py-0.5 rounded-full text-xs ${todo.priority === "High"
