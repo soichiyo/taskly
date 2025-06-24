@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     
-    /* 👇 この部分を追加・確認 */
+
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
