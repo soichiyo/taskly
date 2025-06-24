@@ -4,7 +4,7 @@
 // ✅ サブタスクの追加・削除・更新
 import { TodoForm } from "./components/features/todo/TodoForm";
 import { PageHeader } from "./components/PageHeader";
-import { SubTodoModal } from "./components/SubTodoModal";
+import { SubTodoModal } from "./components/features/controls/TodoControls/SubTodoModal";
 import { useTodos, useTodoFilters, useModal } from "../hooks";
 import { TodoControls } from "./components/features/controls/TodoControls";
 import { TodoList } from "./components/features/todo/TodoList";
@@ -41,14 +41,6 @@ export default function App() {
           onSearchChange={setSearchQuery}
         />
 
-        {/* 一時的なテスト用ボタン（モーダルテスト） */}
-        <button
-          onClick={() => openModal(todos[0])}
-          className="mb-4 bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          モーダルテスト（1番目のTodo）
-        </button>
-
         {/* Todo一覧（TodoListコンポーネント） */}
         <TodoList
           todos={filteredAndSortedTodos}
@@ -56,6 +48,7 @@ export default function App() {
           onToggle={handleToggle}
           onDelete={handleDelete}
           onUpdate={updateTodo}
+          onOpenModal={openModal}
         />
 
         {/* サブタスクモーダル（SubTodoModalコンポーネント） */}

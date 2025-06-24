@@ -9,9 +9,10 @@ interface TodoListProps {
     onToggle: (id: string) => void;
     onDelete: (id: string) => void;
     onUpdate: (id: string, updatedData: Partial<Todo>) => void;
+    onOpenModal: (todo: Todo) => void;
 }
 
-export const TodoList = ({ todos, selectedFilter, onToggle, onDelete, onUpdate }: TodoListProps) => {
+export const TodoList = ({ todos, selectedFilter, onToggle, onDelete, onUpdate, onOpenModal }: TodoListProps) => {
     return (<Card padding="sm">
         {todos.length === 0 ? (
             <div className="px-5 py-10 text-center text-gray-500"
@@ -39,6 +40,7 @@ export const TodoList = ({ todos, selectedFilter, onToggle, onDelete, onUpdate }
                             onToggle={onToggle}
                             onDelete={onDelete}
                             onUpdate={onUpdate}
+                            onOpenModal={onOpenModal}
                         />
                     </li>
                 ))}

@@ -8,7 +8,7 @@
 // ✅ フォームリセット
 
 import { useState } from "react";
-import type { CreateTodoInput, Priority } from "../../../types/todo";
+import type { CreateTodoInput } from "../../../types/todo";
 import { Button } from "../../ui/Button";
 
 interface TodoFormProps {
@@ -39,7 +39,7 @@ export const TodoForm = (props: TodoFormProps) => {
   });
 
 
-  const validateField = (fieldName: string, value: string) => {
+  const validateField = (fieldName: keyof CreateTodoInput, value: string) => {
     let error = "";
 
     switch (fieldName) {
@@ -110,48 +110,13 @@ export const TodoForm = (props: TodoFormProps) => {
     });
   };
 
-  // タイトル用
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setFormData(prev => ({ ...prev, title: value }));
-
-    // リアルタイムバリデーション
-    const error = validateField('title', value);
-    setFieldErrors(prev => ({ ...prev, title: error }));
-  };
-
-  //詳細説明用
-  const handleDescriptionChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const value = event.target.value;
-    setFormData(prev => ({ ...prev, description: value }));
-
-    // リアルタイムバリデーション
-    const error = validateField('description', value);
-    setFieldErrors(prev => ({ ...prev, description: error }));
-  };
-
-  //期限用
-  const handleDueDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setFormData(prev => ({ ...prev, dueDate: value }));
-
-    // リアルタイムバリデーション
-    const error = validateField('dueDate', value);
-    setFieldErrors(prev => ({ ...prev, dueDate: error }));
-  };
-
-  //優先度用
-  const handlePriorityChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const value = event.target.value;
-    setFormData(prev => ({ ...prev, priority: value as Priority }));
-
-    // リアルタイムバリデーション
-    const error = validateField('priority', value);
-    setFieldErrors(prev => ({ ...prev, priority: error }));
+  const handleFieldChange = (field: keyof CreateTodoInput, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    const error = validateField(field, value);
+    setFieldErrors(prev => ({ ...prev, [field]: error }));
   };
 
   return (
@@ -172,7 +137,7 @@ export const TodoForm = (props: TodoFormProps) => {
         <input
           type="text"
           value={formData.title}
-          onChange={handleTitleChange}
+          onChange={(e) => handleFieldChange('title', e.target.value)}
           placeholder="やることを入力してください"
           className="w-full p-2 border border-gray-300 rounded-md text-sm"
         />
@@ -192,7 +157,7 @@ export const TodoForm = (props: TodoFormProps) => {
         </label>
         <textarea
           value={formData.description}
-          onChange={handleDescriptionChange}
+          onChange={(e) => handleFieldChange('description', e.target.value)}
           placeholder="詳細な説明（任意）"
           rows={3}
           className="w-full p-2 border border-gray-300 rounded-md text-sm resize-y"
@@ -217,7 +182,7 @@ export const TodoForm = (props: TodoFormProps) => {
           <input
             type="date"
             value={formData.dueDate}
-            onChange={handleDueDateChange}
+            onChange={(e) => handleFieldChange('dueDate', e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
           />
           {/* 期限のエラーメッセージを表示 */}
@@ -236,7 +201,7 @@ export const TodoForm = (props: TodoFormProps) => {
           </label>
           <select
             value={formData.priority}
-            onChange={handlePriorityChange}
+            onChange={(e) => handleFieldChange('priority', e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
           >
             <option value="Low">Low</option>
