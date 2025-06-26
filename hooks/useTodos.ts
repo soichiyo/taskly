@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Todo, CreateTodoInput, SubTodo, CreateSubTodoInput } from "../src/types/todo";
+import { type Todo, type CreateTodoInput, type SubTodo, type CreateSubTodoInput, Priority } from "../src/types/todo";
 
 export const useTodos = () => {
     // 自分で状態を持っているため引数なし
@@ -9,7 +9,7 @@ export const useTodos = () => {
             title: "Creating Todo-App",
             description: "delicious coffee",
             dueDate: "2025-12-01",
-            priority: "High",
+            priority: Priority.High,
             completed: false,
             createdAt: "2025-06-06T10:00:00Z",
             updatedAt: "2025-06-06T10:00:00Z",
@@ -28,7 +28,7 @@ export const useTodos = () => {
             title: "Learn TypeScript",
             description: "Practice with React",
             dueDate: "2025-12-15",
-            priority: "Middle",
+            priority: Priority.Middle,
             completed: false,
             createdAt: "2025-06-06T11:00:00Z",
             updatedAt: "2025-06-06T11:00:00Z",

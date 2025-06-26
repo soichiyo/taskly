@@ -1,6 +1,14 @@
 // Todo アイテムの優先度
 // ユニオン型
-export type Priority = "High" | "Middle" | "Low";
+// export type Priority = "High" | "Middle" | "Low";
+
+export const Priority = {
+    High: 'High',
+    Middle: 'Middle',
+    Low: 'Low'
+} as const;
+
+type Priority = (typeof Priority)[keyof typeof Priority];
 
 // Todo アイテムの型定義
 export interface Todo {
