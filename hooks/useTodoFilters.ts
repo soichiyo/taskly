@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { FilterType, Todo } from "../src/types/todo";
+import { FilterType, Todo } from "../src/types/todo";
 
 export const useTodoFilters = (todos: Todo[]) => {
     // 外部からデータを受け取って処理するため引数あり

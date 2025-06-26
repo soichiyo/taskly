@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Todo } from "../src/types/todo";
+import { Todo } from "../src/types/todo";
 
 export const useModal = () => {
     // openModal関数

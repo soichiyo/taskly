@@ -1,6 +1,11 @@
 // Todo アイテムの優先度
-// ユニオン型
-export type Priority = "High" | "Middle" | "Low";
+export const Priority = {
+    High: 'High',
+    Middle: 'Middle',
+    Low: 'Low'
+} as const;
+
+export type Priority = (typeof Priority)[keyof typeof Priority];
 
 // Todo アイテムの型定義
 export interface Todo {
@@ -36,4 +41,10 @@ export interface CreateSubTodoInput {
 }
 
 // フィルターの種類
-export type FilterType = "all" | "active" | "completed";
+export const FilterType = {
+    All: "all",
+    Active: "active",
+    Completed: "completed"
+} as const;
+
+export type FilterType = (typeof FilterType)[keyof typeof FilterType];
