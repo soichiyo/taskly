@@ -12,7 +12,7 @@ export interface Todo {
     completed: boolean;
     createdAt: string;
     updatedAt: string;
-    subTodos?: SubTodo[];
+    subTodos: SubTodo[];
 }
 
 export interface SubTodo {

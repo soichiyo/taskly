@@ -32,6 +32,7 @@ export const useTodos = () => {
             completed: false,
             createdAt: "2025-06-06T11:00:00Z",
             updatedAt: "2025-06-06T11:00:00Z",
+            subTodos: [],
         },
     ]);
 
@@ -44,6 +45,7 @@ export const useTodos = () => {
             completed: false,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
+            subTodos: [],
         };
         setTodos((prev) => {
             return [...prev, newTodo];
@@ -99,7 +101,7 @@ export const useTodos = () => {
                 todo.id === todoId
                     ? {
                         ...todo,
-                        subTodos: [...(todo.subTodos || []), newSubTodo]  // subTodosに新しいSubTodoを追加
+                        subTodos: [...todo.subTodos, newSubTodo]  // subTodosに新しいSubTodoを追加
                     }
                     : todo            // 他のTodoはそのまま
             )
@@ -107,12 +109,12 @@ export const useTodos = () => {
     };
 
 
-    // updateSubTodo関数  
+    // updateSubTodo関数
     const updateSubTodo = (todoId: string, subTodoId: string, updatedData: Partial<SubTodo>) => {
         setTodos((prev) =>
             prev.map((todo) =>
                 todo.id === todoId
-                    ? { ...todo, subTodos: todo.subTodos?.map((subTodo) => subTodo.id === subTodoId ? { ...subTodo, ...updatedData, updatedAt: new Date().toISOString() } : subTodo) }
+                    ? { ...todo, subTodos: todo.subTodos.map((subTodo) => subTodo.id === subTodoId ? { ...subTodo, ...updatedData, updatedAt: new Date().toISOString() } : subTodo) }
                     : todo
             )
         );
@@ -121,7 +123,7 @@ export const useTodos = () => {
     const deleteSubTodo = (todoId: string, subTodoId: string) => {
         setTodos((prev) =>
             prev.map((todo) =>
-                todo.id === todoId ? { ...todo, subTodos: todo.subTodos?.filter((subTodo) => subTodo.id !== subTodoId) } : todo
+                todo.id === todoId ? { ...todo, subTodos: todo.subTodos.filter((subTodo) => subTodo.id !== subTodoId) } : todo
             )
         );
     };
@@ -129,7 +131,7 @@ export const useTodos = () => {
     const toggleSubTodo = (todoId: string, subTodoId: string) => {
         setTodos((prev) =>
             prev.map((todo) =>
-                todo.id === todoId ? { ...todo, subTodos: todo.subTodos?.map((subTodo) => subTodo.id === subTodoId ? { ...subTodo, completed: !subTodo.completed } : subTodo) } : todo
+                todo.id === todoId ? { ...todo, subTodos: todo.subTodos.map((subTodo) => subTodo.id === subTodoId ? { ...subTodo, completed: !subTodo.completed } : subTodo) } : todo
             )
         );
     };

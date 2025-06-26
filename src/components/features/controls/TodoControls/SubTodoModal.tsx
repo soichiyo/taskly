@@ -77,7 +77,7 @@ export const SubTodoModal = ({
 
                     {/* サブタスク一覧 */}
                     <div className="space-y-2">
-                        {todo.subTodos?.map((subTodo) => (
+                        {todo.subTodos.map((subTodo) => (
                             <div key={subTodo.id} className="flex items-center gap-2 p-2 border rounded">
                                 <input
                                     type="checkbox"
