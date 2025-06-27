@@ -17,7 +17,8 @@ export interface Todo {
     completed: boolean;
     createdAt: string;
     updatedAt: string;
-    subTodos?: SubTodo[];
+    subTodos: SubTodo[];
+    // subTodos? だと null の場合を考慮する必要が出てくるので、必須項目にしてデフォルトを空配列にした方が考慮事項が少なくて楽ちん
 }
 
 export interface SubTodo {
