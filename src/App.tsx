@@ -14,13 +14,13 @@ export default function App() {
   // 状態管理
   const { todos, addTodo, updateTodo, handleDelete, handleToggle, addSubTodo, updateSubTodo, deleteSubTodo, toggleSubTodo } = useTodos();
   const { selectedFilter, setSelectedFilter, sortBy, setSortBy, sortOrder, setSortOrder, searchQuery, setSearchQuery, filteredAndSortedTodos, filterStats } = useTodoFilters(todos);
-  const { selectedTodo, openModal, closeModal } = useModal();
+  const { selectedTodo, openModal, closeModal } = useModal(todos);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
 
       {/* ヘッダー（PageHeaderコンポーネント） */}
-      <PageHeader title={"Todo App"} description={"TypeScript + React で作るTodoアプリ"} />
+      <PageHeader title={"Taskly"} description={"TypeScript + React で作るタスク管理アプリ"} />
 
       {/* メインコンテンツ */}
       <main className="max-w-2xl mx-auto p-4">
@@ -52,7 +52,7 @@ export default function App() {
         />
 
         {/* サブタスクモーダル（SubTodoModalコンポーネント） */}
-        {selectedTodo && (
+        {selectedTodo && (   // ← selectedTodoがnullじゃなければモーダル表示 
           <SubTodoModal
             todo={selectedTodo}
             onClose={closeModal}
