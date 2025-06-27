@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Todo } from "../src/types/todo";
 
-export const useModal = () => {
-    // openModal関数
-    const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
+export const useModal = (todos: Todo[]) => {
 
-    const openModal = (todo: Todo) => setSelectedTodo(todo);
-    // closeModal関数
-    const closeModal = () => setSelectedTodo(null);
+    const [selectedTodoId, setSelectedTodoId] = useState<string | null>(null);
+
+    const selectedTodo = selectedTodoId ? todos.find((todo) => todo.id === selectedTodoId) : null;
+
+    const openModal = (todo: Todo) => setSelectedTodoId(todo.id);
+
+    const closeModal = () => setSelectedTodoId(null);
 
     return {
         selectedTodo,

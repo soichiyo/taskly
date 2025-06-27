@@ -20,7 +20,7 @@ export const SubTodoModal = ({
 
     const [newSubTodoTitle, setNewSubTodoTitle] = useState<string>("");
 
-    const handleAddSubTodo = () => {
+    const addTodo = () => {
         console.log("Adding SubTodo:", newSubTodoTitle); // デバッグログ
         if (newSubTodoTitle.trim()) {
             onAddSubTodo(todo.id, { title: newSubTodoTitle });
@@ -68,7 +68,7 @@ export const SubTodoModal = ({
                             <Button
                                 type="submit"
                                 className="text-white bg-blue-600 hover:bg-blue-700"
-                                onClick={handleAddSubTodo}
+                                onClick={addTodo}
                             >
                                 追加
                             </Button>
@@ -77,7 +77,7 @@ export const SubTodoModal = ({
 
                     {/* サブタスク一覧 */}
                     <div className="space-y-2">
-                        {todo.subTodos?.map((subTodo) => (
+                        {todo.subTodos.map((subTodo) => (
                             <div key={subTodo.id} className="flex items-center gap-2 p-2 border rounded">
                                 <input
                                     type="checkbox"

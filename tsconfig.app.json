@@ -20,11 +20,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     
-
+    /* Path mapping - 追加 */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
+    
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true

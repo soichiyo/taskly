@@ -24,6 +24,8 @@ TodoFormProps = コンポーネントに必要な機能を定義
 }
 
 export const TodoForm = (props: TodoFormProps) => {
+
+  // フォームの状態管理
   const [formData, setFormData] = useState<CreateTodoInput>({
     title: "",
     description: "",
@@ -31,7 +33,7 @@ export const TodoForm = (props: TodoFormProps) => {
     priority: "Low",
   });
 
-
+  // フィールドのエラー管理
   const [fieldErrors, setFieldErrors] = useState({
     title: "",
     description: "",
@@ -39,6 +41,7 @@ export const TodoForm = (props: TodoFormProps) => {
   });
 
 
+  // バリデーション
   const validateField = (fieldName: keyof CreateTodoInput, value: string) => {
     let error = "";
 
