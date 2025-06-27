@@ -26,6 +26,9 @@ export const FilterSection = ({
                 <FilterButton
                     isSelected={selectedFilter === "all"}
                     onClick={() => onFilterChange("all")}
+                    size="default"
+                    disabled={false}
+                    className=""
                 >
                     すべて ({filterStats.all})
                 </FilterButton>
@@ -33,6 +36,9 @@ export const FilterSection = ({
                 <FilterButton
                     isSelected={selectedFilter === "active"}
                     onClick={() => onFilterChange("active")}
+                    size="default"
+                    disabled={false}
+                    className=""
                 >
                     未完了 ({filterStats.active})
                 </FilterButton>
@@ -40,6 +46,9 @@ export const FilterSection = ({
                 <FilterButton
                     isSelected={selectedFilter === "completed"}
                     onClick={() => onFilterChange("completed")}
+                    size="default"
+                    disabled={false}
+                    className=""
                 >
                     完了済み ({filterStats.completed})
                 </FilterButton>
