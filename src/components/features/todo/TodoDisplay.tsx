@@ -1,5 +1,5 @@
 import { Todo } from "../../../types/todo";
-import { Button } from "../../ui/button.tsx";
+import { Button } from "../../Button.tsx";
 
 interface TodoDisplayProps {
     todo: Todo;
