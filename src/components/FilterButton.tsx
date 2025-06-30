@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from "@/components/ui/Button.tsx";
+import { Button, type ButtonProps } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type FilterButtonProps = {

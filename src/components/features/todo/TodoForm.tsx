@@ -9,7 +9,7 @@
 
 import { useState } from "react";
 import type { CreateTodoInput } from "@/types/todo";
-import { Button } from "@/components/ui/Button.tsx";
+import { Button } from "@/components/ui/button";
 
 interface TodoFormProps {
   onAddTodo: (todoData: CreateTodoInput) => void;
