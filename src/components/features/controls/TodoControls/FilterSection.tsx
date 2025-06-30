@@ -1,8 +1,8 @@
 //UIだけを担当するコンポーネント
 
-import { FilterButton } from "@/components/FilterButton";
+import { FilterButton } from "@/components/FilterButton.tsx";
 import { FilterType } from "@/types/todo";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card.tsx";
 
 interface FilterSectionProps {
     selectedFilter: FilterType;

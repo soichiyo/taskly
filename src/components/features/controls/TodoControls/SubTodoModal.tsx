@@ -1,5 +1,5 @@
 import type { Todo, SubTodo, CreateSubTodoInput } from '@/types/todo';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button.tsx';
 import { useState } from 'react';
 
 interface SubTodoModalProps {

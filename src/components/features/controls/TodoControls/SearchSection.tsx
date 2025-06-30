@@ -1,6 +1,6 @@
 //UIだけを担当するコンポーネント
 
-import { Card } from "../../../ui/Card";
+import { Card } from "../../../ui/Card.tsx";
 
 interface SearchSectionProps {
     searchQuery: string;

@@ -1,6 +1,6 @@
 //UIだけを担当するコンポーネント
-import { Card } from "../../../ui/Card";
-import { SortButton } from "../../../SortButton";
+import { Card } from "../../../ui/Card.tsx";
+import { SortButton } from "../../../SortButton.tsx";
 
 interface SortSectionProps {
     sortBy: "createdAt" | "dueDate" | "title" | "priority";

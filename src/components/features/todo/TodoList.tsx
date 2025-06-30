@@ -1,6 +1,6 @@
 //メインコンポーネント（複数の子を統合）
 import type { Todo, FilterType } from "../../../types/todo";
-import { Card } from "../../ui/Card";
+import { Card } from "../../ui/Card.tsx";
 import { TodoItem } from "./TodoItem";
 
 interface TodoListProps {

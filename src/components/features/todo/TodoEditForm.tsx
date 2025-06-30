@@ -1,4 +1,4 @@
-import { Button } from "../../ui/Button";
+import { Button } from "../../ui/Button.tsx";
 import { Priority } from "../../../types/todo";
 
 interface TodoEditData {
