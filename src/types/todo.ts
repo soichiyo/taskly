@@ -1,51 +1,51 @@
 // Todo アイテムの優先度
 export const Priority = {
-    High: 'High',
-    Middle: 'Middle',
-    Low: 'Low'
+  High: "High",
+  Middle: "Middle",
+  Low: "Low",
 } as const;
 
 export type Priority = (typeof Priority)[keyof typeof Priority];
 
 // Todo アイテムの型定義
 export interface Todo {
-    id: string;
-    title: string;
-    description?: string;
-    dueDate?: string;
-    priority: Priority;
-    completed: boolean;
-    createdAt: string;
-    updatedAt: string;
-    subTodos: SubTodo[];
-    // subTodos? だと null の場合を考慮する必要が出てくるので、必須項目にしてデフォルトを空配列にした方が考慮事項が少なくて楽ちん
+  id: string;
+  title: string;
+  description?: string;
+  dueDate?: string;
+  priority: Priority;
+  completed: boolean;
+  createdAt: string;
+  updatedAt: string;
+  subTodos: SubTodo[];
+  // subTodos? だと null の場合を考慮する必要が出てくるので、必須項目にしてデフォルトを空配列にした方が考慮事項が少なくて楽ちん
 }
 
 export interface SubTodo {
-    id: string;
-    title: string;
-    completed: boolean;
-    createdAt: string;
-    updatedAt: string;
+  id: string;
+  title: string;
+  completed: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
 // Todo作成時の型
 export interface CreateTodoInput {
-    title: string;
-    description?: string;
-    dueDate?: string;
-    priority: Priority;
+  title: string;
+  description?: string;
+  dueDate?: string;
+  priority: Priority;
 }
 
 export interface CreateSubTodoInput {
-    title: string;
+  title: string;
 }
 
 // フィルターの種類
 export const FilterType = {
-    All: "all",
-    Active: "active",
-    Completed: "completed"
+  All: "all",
+  Active: "active",
+  Completed: "completed",
 } as const;
 
 export type FilterType = (typeof FilterType)[keyof typeof FilterType];

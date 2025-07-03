@@ -10,21 +10,42 @@ import { TodoControls } from "./components/features/controls/TodoControls";
 import { TodoList } from "./components/features/todo/TodoList";
 
 export default function App() {
-
   // 状態管理
-  const { todos, addTodo, updateTodo, handleDelete, handleToggle, addSubTodo, updateSubTodo, deleteSubTodo, toggleSubTodo } = useTodos();
-  const { selectedFilter, setSelectedFilter, sortBy, setSortBy, sortOrder, setSortOrder, searchQuery, setSearchQuery, filteredAndSortedTodos, filterStats } = useTodoFilters(todos);
+  const {
+    todos,
+    addTodo,
+    updateTodo,
+    handleDelete,
+    handleToggle,
+    addSubTodo,
+    updateSubTodo,
+    deleteSubTodo,
+    toggleSubTodo,
+  } = useTodos();
+  const {
+    selectedFilter,
+    setSelectedFilter,
+    sortBy,
+    setSortBy,
+    sortOrder,
+    setSortOrder,
+    searchQuery,
+    setSearchQuery,
+    filteredAndSortedTodos,
+    filterStats,
+  } = useTodoFilters(todos);
   const { selectedTodo, openModal, closeModal } = useModal(todos);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
-
       {/* ヘッダー（PageHeaderコンポーネント） */}
-      <PageHeader title={"Taskly"} description={"TypeScript + React で作るタスク管理アプリ"} />
+      <PageHeader
+        title={"Taskly"}
+        description={"TypeScript + React で作るタスク管理アプリ"}
+      />
 
       {/* メインコンテンツ */}
       <main className="max-w-2xl mx-auto p-4">
-
         {/* フォーム（TodoFormコンポーネント） */}
         <TodoForm onAddTodo={addTodo} />
 
@@ -52,7 +73,7 @@ export default function App() {
         />
 
         {/* サブタスクモーダル（SubTodoModalコンポーネント） */}
-        {selectedTodo && (   // ← selectedTodoがnullじゃなければモーダル表示 
+        {selectedTodo && ( // ← selectedTodoがnullじゃなければモーダル表示
           <SubTodoModal
             todo={selectedTodo}
             onClose={closeModal}
@@ -63,6 +84,6 @@ export default function App() {
           />
         )}
       </main>
-    </div >
+    </div>
   );
 }

@@ -24,7 +24,6 @@ TodoFormProps = コンポーネントに必要な機能を定義
 }
 
 export const TodoForm = (props: TodoFormProps) => {
-
   // フォームの状態管理
   const [formData, setFormData] = useState<CreateTodoInput>({
     title: "",
@@ -39,7 +38,6 @@ export const TodoForm = (props: TodoFormProps) => {
     description: "",
     dueDate: "",
   });
-
 
   // バリデーション
   const validateField = (fieldName: keyof CreateTodoInput, value: string) => {
@@ -78,22 +76,25 @@ export const TodoForm = (props: TodoFormProps) => {
     event.preventDefault();
 
     // 全フィールドのバリデーションを実行
-    const titleError = validateField('title', formData.title);
-    const descriptionError = validateField('description', formData.description || '');
-    const dueDateError = validateField('dueDate', formData.dueDate || '');
+    const titleError = validateField("title", formData.title);
+    const descriptionError = validateField(
+      "description",
+      formData.description || ""
+    );
+    const dueDateError = validateField("dueDate", formData.dueDate || "");
 
     // 個別エラーを更新
     setFieldErrors({
       title: titleError,
       description: descriptionError,
-      dueDate: dueDateError
+      dueDate: dueDateError,
     });
 
     // エラーがあるかチェック
     const hasErrors = titleError || descriptionError || dueDateError;
 
     if (hasErrors) {
-      return;  // エラーがあれば送信しない
+      return; // エラーがあれば送信しない
     }
 
     // バリデーション成功時の処理
@@ -107,19 +108,19 @@ export const TodoForm = (props: TodoFormProps) => {
 
     // エラーをクリア
     setFieldErrors({
-      title: '',
-      description: '',
-      dueDate: ''
+      title: "",
+      description: "",
+      dueDate: "",
     });
   };
 
   const handleFieldChange = (field: keyof CreateTodoInput, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
     const error = validateField(field, value);
-    setFieldErrors(prev => ({ ...prev, [field]: error }));
+    setFieldErrors((prev) => ({ ...prev, [field]: error }));
   };
 
   return (
@@ -127,84 +128,60 @@ export const TodoForm = (props: TodoFormProps) => {
       onSubmit={handleSubmit}
       className="bg-white p-4 rounded-lg border border-gray-200 mb-4 shadow-sm"
     >
-      <h2>
-        新しいTodoを追加
-      </h2>
+      <h2>新しいTodoを追加</h2>
 
       <div className="mb-4">
-        <label
-          className="block mb-1 font-bold text-gray-700"
-        >
+        <label className="block mb-1 font-bold text-gray-700">
           タイトル <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
           value={formData.title}
-          onChange={(e) => handleFieldChange('title', e.target.value)}
+          onChange={(e) => handleFieldChange("title", e.target.value)}
           placeholder="やることを入力してください"
           className="w-full p-2 border border-gray-300 rounded-md text-sm"
         />
         {/* タイトルのエラーメッセージを表示 */}
         {fieldErrors.title && (
-          <p className="text-red-500 text-sm mt-1">
-            {fieldErrors.title}
-          </p>
+          <p className="text-red-500 text-sm mt-1">{fieldErrors.title}</p>
         )}
       </div>
 
       <div className="mb-4">
-        <label
-          className="block mb-1 font-bold text-gray-700"
-        >
-          詳細説明
-        </label>
+        <label className="block mb-1 font-bold text-gray-700">詳細説明</label>
         <textarea
           value={formData.description}
-          onChange={(e) => handleFieldChange('description', e.target.value)}
+          onChange={(e) => handleFieldChange("description", e.target.value)}
           placeholder="詳細な説明（任意）"
           rows={3}
           className="w-full p-2 border border-gray-300 rounded-md text-sm resize-y"
         />
         {/* 詳細説明のエラーメッセージを表示 */}
         {fieldErrors.description && (
-          <p className="text-red-500 text-sm mt-1">
-            {fieldErrors.description}
-          </p>
+          <p className="text-red-500 text-sm mt-1">{fieldErrors.description}</p>
         )}
       </div>
 
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
-          <label
-            className="block mb-1 font-bold text-gray-700"
-          >
-            期限
-          </label>
+          <label className="block mb-1 font-bold text-gray-700">期限</label>
           <input
             type="date"
             value={formData.dueDate}
-            onChange={(e) => handleFieldChange('dueDate', e.target.value)}
+            onChange={(e) => handleFieldChange("dueDate", e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
           />
           {/* 期限のエラーメッセージを表示 */}
           {fieldErrors.dueDate && (
-            <p className="text-red-500 text-sm mt-1">
-              {fieldErrors.dueDate}
-            </p>
+            <p className="text-red-500 text-sm mt-1">{fieldErrors.dueDate}</p>
           )}
         </div>
 
         <div>
-          <label
-            className="block mb-1 font-bold text-gray-700"
-          >
-            優先度
-          </label>
+          <label className="block mb-1 font-bold text-gray-700">優先度</label>
           <select
             value={formData.priority}
-            onChange={(e) => handleFieldChange('priority', e.target.value)}
+            onChange={(e) => handleFieldChange("priority", e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
           >
             <option value="Low">Low</option>
@@ -214,10 +191,7 @@ export const TodoForm = (props: TodoFormProps) => {
         </div>
       </div>
 
-      <Button
-        type="submit"
-        className="bg-blue-600 hover:bg-blue-700"
-      >
+      <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
         追加
       </Button>
     </form>

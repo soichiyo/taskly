@@ -5,51 +5,53 @@ import { SearchSection } from "./SearchSection";
 import { FilterType } from "../../../../types/todo";
 
 interface TodoControlsProps {
-    selectedFilter: FilterType;
-    onFilterChange: (filter: FilterType) => void;
-    filterStats: {
-        all: number;
-        active: number;
-        completed: number;
-    };
-    sortBy: "createdAt" | "dueDate" | "title" | "priority";
-    sortOrder: "asc" | "desc";
-    onSortByChange: (sortBy: "createdAt" | "dueDate" | "title" | "priority") => void;
-    onSortOrderChange: (order: "asc" | "desc") => void;
-    searchQuery: string;
-    onSearchChange: (query: string) => void;
+  selectedFilter: FilterType;
+  onFilterChange: (filter: FilterType) => void;
+  filterStats: {
+    all: number;
+    active: number;
+    completed: number;
+  };
+  sortBy: "createdAt" | "dueDate" | "title" | "priority";
+  sortOrder: "asc" | "desc";
+  onSortByChange: (
+    sortBy: "createdAt" | "dueDate" | "title" | "priority"
+  ) => void;
+  onSortOrderChange: (order: "asc" | "desc") => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
 }
 
 export const TodoControls = ({
-    selectedFilter,
-    onFilterChange,
-    filterStats,
-    sortBy,
-    sortOrder,
-    onSortByChange,
-    onSortOrderChange,
-    searchQuery,
-    onSearchChange,
+  selectedFilter,
+  onFilterChange,
+  filterStats,
+  sortBy,
+  sortOrder,
+  onSortByChange,
+  onSortOrderChange,
+  searchQuery,
+  onSearchChange,
 }: TodoControlsProps) => {
-    return (
-        <div className="space-y-4">
-            <FilterSection
-                selectedFilter={selectedFilter}
-                onFilterChange={onFilterChange}
-                filterStats={filterStats}
-            />
+  return (
+    <div className="space-y-4">
+      <FilterSection
+        selectedFilter={selectedFilter}
+        onFilterChange={onFilterChange}
+        filterStats={filterStats}
+      />
 
-            <SortSection
-                sortBy={sortBy}
-                sortOrder={sortOrder}
-                onSortByChange={onSortByChange}
-                onSortOrderChange={onSortOrderChange}
-            />
+      <SortSection
+        sortBy={sortBy}
+        sortOrder={sortOrder}
+        onSortByChange={onSortByChange}
+        onSortOrderChange={onSortOrderChange}
+      />
 
-            <SearchSection
-                searchQuery={searchQuery}
-                onSearchChange={onSearchChange}
-            />
-        </div>
-    );
+      <SearchSection
+        searchQuery={searchQuery}
+        onSearchChange={onSearchChange}
+      />
+    </div>
+  );
 };

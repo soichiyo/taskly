@@ -1,7 +1,7 @@
 type PageHeaderProps = {
   title: string;
   description: string;
-}
+};
 
 export const PageHeader = ({ title, description }: PageHeaderProps) => {
   return (
@@ -42,5 +42,5 @@ export const PageHeader = ({ title, description }: PageHeaderProps) => {
         </p>
       </div>
     </header>
-  )
-}
+  );
+};

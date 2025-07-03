@@ -14,78 +14,78 @@ import { TodoEditForm } from "./TodoEditForm";
 import { TodoDisplay } from "./TodoDisplay";
 
 interface TodoItemProps {
-    todo: Todo;
-    onToggle: (id: string) => void;
-    onDelete: (id: string) => void;
-    onUpdate: (id: string, updatedData: Partial<Todo>) => void;
-    onOpenModal: (todo: Todo) => void;
-};
+  todo: Todo;
+  onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
+  onUpdate: (id: string, updatedData: Partial<Todo>) => void;
+  onOpenModal: (todo: Todo) => void;
+}
 
 export const TodoItem = ({
-    todo,
-    onToggle,
-    onDelete,
-    onUpdate,
-    onOpenModal,
+  todo,
+  onToggle,
+  onDelete,
+  onUpdate,
+  onOpenModal,
 }: TodoItemProps) => {
-    /*
+  /*
   分割導入という使い方↑、結果（以下の変数が作られる）
   const todo = props.todo;
   const onToggle = props.onToggle;  
   const onDelete = props.onDelete;
   */
 
-    const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [editData, setEditData] = useState({
-        title: todo.title,
-        description: todo.description || "",
-        dueDate: todo.dueDate || "",
-        priority: todo.priority,
-    });
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [editData, setEditData] = useState({
+    title: todo.title,
+    description: todo.description || "",
+    dueDate: todo.dueDate || "",
+    priority: todo.priority,
+  });
 
-    const handleEditStart = () => {
-        console.log("Editing Start"); // デバッグログ
+  const handleEditStart = () => {
+    console.log("Editing Start"); // デバッグログ
 
-        setIsEditing(true);
-    };
+    setIsEditing(true);
+  };
 
-    const handleEditCancel = () => {
-        setIsEditing(false);
-    };
+  const handleEditCancel = () => {
+    setIsEditing(false);
+  };
 
-    const handleEditSave = () => {
-        onUpdate(todo.id, editData);
-        setIsEditing(false);
-    };
+  const handleEditSave = () => {
+    onUpdate(todo.id, editData);
+    setIsEditing(false);
+  };
 
-    const handleEditChange = (
-        field: keyof typeof editData,  // ← 実在するフィールド名のみ受け入れる
-        value: string
-    ) => {
-        setEditData((prev) => ({
-            ...prev,
-            [field]: value
-        }));
-    }
+  const handleEditChange = (
+    field: keyof typeof editData, // ← 実在するフィールド名のみ受け入れる
+    value: string
+  ) => {
+    setEditData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
 
-    return (
-        <div>
-            {isEditing ? (
-                <TodoEditForm
-                    editData={editData}
-                    onEditChange={handleEditChange}
-                    onEditCancel={handleEditCancel}
-                    onEditSave={handleEditSave}
-                />) : (
-                <TodoDisplay
-                    todo={todo}
-                    onToggle={onToggle}
-                    onDelete={onDelete}
-                    onEdit={handleEditStart}
-                    onOpenModal={onOpenModal}
-                />
-            )
-            }
-        </div >
-    );
+  return (
+    <div>
+      {isEditing ? (
+        <TodoEditForm
+          editData={editData}
+          onEditChange={handleEditChange}
+          onEditCancel={handleEditCancel}
+          onEditSave={handleEditSave}
+        />
+      ) : (
+        <TodoDisplay
+          todo={todo}
+          onToggle={onToggle}
+          onDelete={onDelete}
+          onEdit={handleEditStart}
+          onOpenModal={onOpenModal}
+        />
+      )}
+    </div>
+  );
 };
