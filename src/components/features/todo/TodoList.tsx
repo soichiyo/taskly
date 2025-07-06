@@ -9,8 +9,6 @@ interface TodoListProps {
   todos: Todo[];
   selectedFilter: FilterType;
   onToggle: (id: string) => void;
-  // onDelete: (id: string) => void;
-  // onUpdate: (id: string, updatedData: Partial<Todo>) => void;
   onOpenModal: (todo: Todo) => void;
   todoModal: React.ReactNode;
 }

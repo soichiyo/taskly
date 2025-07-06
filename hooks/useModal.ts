@@ -6,6 +6,7 @@ import { Todo } from "../src/types/todo";
 
 export const useModal = (todos: Todo[]) => {
   const [selectedTodoId, setSelectedTodoId] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   const selectedTodo = selectedTodoId
     ? todos.find((todo) => todo.id === selectedTodoId)
@@ -19,5 +20,7 @@ export const useModal = (todos: Todo[]) => {
     selectedTodo,
     openModal,
     closeModal,
+    isEditing,
+    setIsEditing,
   };
 };

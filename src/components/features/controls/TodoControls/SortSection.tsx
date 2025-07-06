@@ -3,14 +3,13 @@
 
 import { Card } from "../../../ui/Card.tsx";
 import { SortButton } from "../../../SortButton.tsx";
+import { SortBy, SortOrder } from "../../../../types/todo.ts";
 
 interface SortSectionProps {
-  sortBy: "createdAt" | "dueDate" | "title" | "priority";
-  sortOrder: "asc" | "desc";
-  onSortByChange: (
-    sortBy: "createdAt" | "dueDate" | "title" | "priority"
-  ) => void;
-  onSortOrderChange: (order: "asc" | "desc") => void;
+  sortBy: SortBy;
+  sortOrder: SortOrder;
+  onSortByChange: (sortBy: SortBy) => void;
+  onSortOrderChange: (order: SortOrder) => void;
 }
 
 export const SortSection = ({
@@ -26,7 +25,7 @@ export const SortSection = ({
       <div className="flex flex-wrap gap-2">
         <select
           value={sortBy}
-          onChange={(e) => onSortByChange(e.target.value as any)}
+          onChange={(e) => onSortByChange(e.target.value as SortBy)}
           className="p-2 border border-gray-300 rounded-md text-sm"
         >
           <option value="createdAt">作成日時</option>
@@ -36,10 +35,12 @@ export const SortSection = ({
 
         <SortButton
           onClick={() =>
-            onSortOrderChange(sortOrder === "asc" ? "desc" : "asc")
+            onSortOrderChange(
+              sortOrder === SortOrder.Asc ? SortOrder.Desc : SortOrder.Asc
+            )
           }
         >
-          {sortOrder === "asc" ? "↑ 昇順" : "↓ 降順"}
+          {sortOrder === SortOrder.Asc ? "↑ 昇順" : "↓ 降順"}
         </SortButton>
       </div>
     </Card>
