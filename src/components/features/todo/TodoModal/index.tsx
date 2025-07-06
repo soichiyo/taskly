@@ -1,7 +1,8 @@
 //features/todoの責任は「UIの表示とユーザーインタラクション」
 //Todo詳細・編集UI（モーダルの見た目・フォーム制御・ローカル状態管理）
 
-import { Priority, Todo, SubTodo } from "@/types/todo";
+import { Todo, SubTodo } from "@/types/todo";
+import { PriorityBadge } from "@/components/ui/PriorityBadge";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { TodoEditForm } from "./TodoEditForm";
@@ -21,6 +22,7 @@ interface TodoModalProps {
   ) => void;
   onDeleteSubTodo: (todoId: string, subTodoId: string) => void;
   onToggleSubTodo: (todoId: string, subTodoId: string) => void;
+  onToggle: (id: string) => void;
   isEditing: boolean;
   setIsEditing: (isEditing: boolean) => void;
 }
@@ -33,6 +35,7 @@ export const TodoModal = ({
   onAddSubTodo,
   onDeleteSubTodo,
   onToggleSubTodo,
+  onToggle,
   isEditing,
   setIsEditing,
 }: TodoModalProps) => {
@@ -57,20 +60,23 @@ export const TodoModal = ({
           ) : (
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <h3 className="text-xl font-bold text-gray-900">
-                  {todo.title}
-                </h3>
-                <span
-                  className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    todo.priority === Priority.High
-                      ? "bg-red-100 text-red-800"
-                      : todo.priority === Priority.Middle
-                      ? "bg-yellow-100 text-yellow-800"
-                      : "bg-green-100 text-green-800"
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => onToggle(todo.id)}
+                  className="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+
+                <h3
+                  className={`flex-1 text-xl font-bold text-gray-900 ${
+                    todo.completed
+                      ? "line-through text-gray-500"
+                      : "text-gray-900"
                   }`}
                 >
-                  {todo.priority}
-                </span>
+                  {todo.title}
+                </h3>
+                <PriorityBadge priority={todo.priority} />
               </div>
 
               {todo.description && (
