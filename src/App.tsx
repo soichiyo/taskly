@@ -4,7 +4,7 @@
 // ✅ サブタスクの追加・削除・更新
 import { TodoForm } from "./components/features/todo/TodoForm";
 import { PageHeader } from "./components/PageHeader";
-import { SubTodoModal } from "./components/features/controls/TodoControls/SubTodoModal";
+import { TodoModal } from "./components/features/todo/TodoModal";
 import { useTodos, useTodoFilters, useModal } from "../hooks";
 import { TodoControls } from "./components/features/controls/TodoControls";
 import { TodoList } from "./components/features/todo/TodoList";
@@ -67,22 +67,24 @@ export default function App() {
           todos={filteredAndSortedTodos}
           selectedFilter={selectedFilter}
           onToggle={handleToggle}
+          onOpenModal={openModal}
           onDelete={handleDelete}
           onUpdate={updateTodo}
-          onOpenModal={openModal}
+          todoModal={
+            selectedTodo && ( // ← selectedTodoがnullじゃなければモーダル表示
+              <TodoModal
+                todo={selectedTodo}
+                onClose={closeModal}
+                onUpdateTodo={updateTodo} // ← 追加: Todo編集機能
+                onDeleteTodo={handleDelete} // ← 追加: Todo削除機能
+                onAddSubTodo={addSubTodo}
+                onUpdateSubTodo={updateSubTodo}
+                onDeleteSubTodo={deleteSubTodo}
+                onToggleSubTodo={toggleSubTodo}
+              />
+            )
+          }
         />
-
-        {/* サブタスクモーダル（SubTodoModalコンポーネント） */}
-        {selectedTodo && ( // ← selectedTodoがnullじゃなければモーダル表示
-          <SubTodoModal
-            todo={selectedTodo}
-            onClose={closeModal}
-            onAddSubTodo={addSubTodo}
-            onUpdateSubTodo={updateSubTodo}
-            onDeleteSubTodo={deleteSubTodo}
-            onToggleSubTodo={toggleSubTodo}
-          />
-        )}
       </main>
     </div>
   );

@@ -10,6 +10,7 @@ interface TodoListProps {
   onDelete: (id: string) => void;
   onUpdate: (id: string, updatedData: Partial<Todo>) => void;
   onOpenModal: (todo: Todo) => void;
+  todoModal: React.ReactNode;
 }
 
 export const TodoList = ({
@@ -19,6 +20,7 @@ export const TodoList = ({
   onDelete,
   onUpdate,
   onOpenModal,
+  todoModal,
 }: TodoListProps) => {
   return (
     <Card padding="sm">
@@ -43,14 +45,15 @@ export const TodoList = ({
               <TodoItem
                 todo={item}
                 onToggle={onToggle}
+                onOpenModal={onOpenModal}
                 onDelete={onDelete}
                 onUpdate={onUpdate}
-                onOpenModal={onOpenModal}
               />
             </li>
           ))}
         </ul>
       )}
+      {todoModal}
     </Card>
   );
 };
