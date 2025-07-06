@@ -36,9 +36,9 @@ export const SubTodoAddForm = ({ onAddSubTodo, todo }: SubTodoAddFormProps) => {
         onChange={(e) => setNewSubTodoTitle(e.target.value)}
         onKeyPress={handleKeyPress}
         placeholder="新しいサブタスクを追加"
-        className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="w-full p-2 border border-gray-300 rounded-md text-sm"
       />
-      <Button onClick={handleAddSubTodo} variant="default">
+      <Button onClick={handleAddSubTodo} variant="submit">
         追加
       </Button>
     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Todo } from "../../../../types/todo";
+import { Priority, Todo } from "../../../../types/todo";
 import { Button } from "../../../ui/Button";
 
 interface TodoEditFormProps {
@@ -83,9 +83,9 @@ export const TodoEditForm = ({
           }
           className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         >
-          <option value="Low">Low</option>
-          <option value="Middle">Middle</option>
-          <option value="High">High</option>
+          <option value={Priority.Low}>{Priority.Low}</option>
+          <option value={Priority.Middle}>{Priority.Middle}</option>
+          <option value={Priority.High}>{Priority.High}</option>
         </select>
       </div>
 

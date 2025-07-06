@@ -38,9 +38,8 @@ export const SubTodoList = ({
               </span>
               <Button
                 onClick={() => onDeleteSubTodo(todo.id, subTodo.id)}
-                variant="outline"
+                variant="delete"
                 size="sm"
-                className="text-red-600 border-red-600 hover:bg-red-50"
               >
                 削除
               </Button>

@@ -1,8 +1,8 @@
 // Todo アイテムの優先度
 export const Priority = {
-  High: "High",
-  Middle: "Middle",
   Low: "Low",
+  Middle: "Middle",
+  High: "High",
 } as const;
 
 export type Priority = (typeof Priority)[keyof typeof Priority];

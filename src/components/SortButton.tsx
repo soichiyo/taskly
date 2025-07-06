@@ -7,11 +7,7 @@ type SortButtonProps = {
 
 export const SortButton = ({ onClick, children }: SortButtonProps) => {
   return (
-    <Button
-      variant="outline" // またはお好みのvariant
-      size="sm" // またはお好みのsize
-      onClick={onClick}
-    >
+    <Button variant="outline" onClick={onClick}>
       {children}
     </Button>
   );

@@ -2,7 +2,7 @@
 //Todo作成フォームUI
 
 import { useState } from "react";
-import type { CreateTodoInput } from "@/types/todo";
+import { CreateTodoInput, Priority } from "@/types/todo";
 import { Button } from "@/components/ui/Button";
 
 interface TodoFormProps {
@@ -178,14 +178,14 @@ export const TodoForm = (props: TodoFormProps) => {
             onChange={(e) => handleFieldChange("priority", e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
           >
-            <option value="Low">Low</option>
-            <option value="Middle">Middle</option>
-            <option value="High">High</option>
+            <option value={Priority.Low}>{Priority.Low}</option>
+            <option value={Priority.Middle}>{Priority.Middle}</option>
+            <option value={Priority.High}>{Priority.High}</option>
           </select>
         </div>
       </div>
 
-      <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+      <Button type="submit" variant="submit">
         追加
       </Button>
     </form>

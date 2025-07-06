@@ -1,7 +1,7 @@
 //features/todoの責任は「UIの表示とユーザーインタラクション」
 //Todo詳細・編集UI（モーダルの見た目・フォーム制御・ローカル状態管理）
 
-import { Todo, SubTodo } from "@/types/todo";
+import { Priority, Todo, SubTodo } from "@/types/todo";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { TodoEditForm } from "./TodoEditForm";
@@ -62,9 +62,9 @@ export const TodoModal = ({
                 </h3>
                 <span
                   className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    todo.priority === "High"
+                    todo.priority === Priority.High
                       ? "bg-red-100 text-red-800"
-                      : todo.priority === "Middle"
+                      : todo.priority === Priority.Middle
                       ? "bg-yellow-100 text-yellow-800"
                       : "bg-green-100 text-green-800"
                   }`}
@@ -105,18 +105,10 @@ export const TodoModal = ({
         {!isEditing && (
           <div className="flex justify-between">
             <div className="flex gap-3">
-              <Button
-                onClick={() => setIsEditing(true)}
-                variant="outline"
-                className="text-blue-600 border-blue-600 hover:bg-blue-50"
-              >
+              <Button onClick={() => setIsEditing(true)} variant="edit">
                 編集
               </Button>
-              <Button
-                onClick={handleDeleteTodo}
-                variant="outline"
-                className="text-red-600 border-red-600 hover:bg-red-50"
-              >
+              <Button onClick={handleDeleteTodo} variant="delete">
                 削除
               </Button>
             </div>
