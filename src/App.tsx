@@ -34,7 +34,8 @@ export default function App() {
     filteredAndSortedTodos,
     filterStats,
   } = useTodoFilters(todos);
-  const { selectedTodo, openModal, closeModal } = useModal(todos);
+  const { selectedTodo, openModal, closeModal, isEditing, setIsEditing } =
+    useModal(todos);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
@@ -79,6 +80,8 @@ export default function App() {
                 onUpdateSubTodo={updateSubTodo}
                 onDeleteSubTodo={deleteSubTodo}
                 onToggleSubTodo={toggleSubTodo}
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
               />
             )
           }

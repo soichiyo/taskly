@@ -7,6 +7,23 @@ export const Priority = {
 
 export type Priority = (typeof Priority)[keyof typeof Priority];
 
+// ソート順の種類
+export const sortBy = {
+  CreatedAt: "createdAt",
+  DueDate: "dueDate",
+  Title: "title",
+  Priority: "priority",
+} as const;
+export type SortBy = (typeof sortBy)[keyof typeof sortBy];
+
+// ソート順
+export const SortOrder = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
+
 // Todo アイテムの型定義
 export interface Todo {
   id: string;
