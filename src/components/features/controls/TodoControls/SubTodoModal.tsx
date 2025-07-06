@@ -21,6 +21,7 @@ export const SubTodoModal = ({
   onAddSubTodo,
   onToggleSubTodo,
 }: SubTodoModalProps) => {
+  // サブタスク追加フォームの状態管理
   const [newSubTodoTitle, setNewSubTodoTitle] = useState<string>("");
 
   const addTodo = () => {
@@ -58,6 +59,7 @@ export const SubTodoModal = ({
             <div className="flex gap-2">
               <input
                 type="text"
+                value={newSubTodoTitle}
                 placeholder="サブタスクを追加..."
                 onChange={(e) => setNewSubTodoTitle(e.target.value)}
                 className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
