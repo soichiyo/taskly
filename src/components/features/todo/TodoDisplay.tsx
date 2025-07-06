@@ -1,7 +1,7 @@
 //features/todoの責任は「UIの表示とユーザーインタラクション」
-//Todo1件の表示UI
 
 import { Todo } from "../../../types/todo";
+import { PriorityBadge } from "@/components/ui/PriorityBadge";
 
 interface TodoDisplayProps {
   todo: Todo;
@@ -22,31 +22,24 @@ export const TodoDisplay = ({
       onClick={() => onOpenModal(todo)}
     >
       <div className="flex items-start gap-3">
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={(e) => {
-            e.stopPropagation(); // クリックイベントのバブリングを防ぐ
-            onToggle(todo.id);
-          }}
-          className="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-        />
+        <div onClick={(e) => e.stopPropagation()}>
+          <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => onToggle(todo.id)}
+            className="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
+        </div>
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-bold text-lg text-gray-800">
-              {todo.title}
-            </span>
             <span
-              className={`px-2 py-0.5 rounded-full text-xs ${
-                todo.priority === "High"
-                  ? "bg-red-50 text-red-600"
-                  : todo.priority === "Middle"
-                  ? "bg-yellow-50 text-yellow-600"
-                  : "bg-green-50 text-green-600"
+              className={`flex-1 font-bold text-lg text-gray-800 ${
+                todo.completed ? "line-through text-gray-500" : "text-gray-900"
               }`}
             >
-              {todo.priority}
+              {todo.title}
             </span>
+            <PriorityBadge priority={todo.priority} size="sm" />
           </div>
 
           <div className="flex flex-wrap gap-1.5 text-sm text-gray-500 mb-2">

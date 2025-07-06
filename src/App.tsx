@@ -80,6 +80,7 @@ export default function App() {
                 onUpdateSubTodo={updateSubTodo}
                 onDeleteSubTodo={deleteSubTodo}
                 onToggleSubTodo={toggleSubTodo}
+                onToggle={handleToggle}
                 isEditing={isEditing}
                 setIsEditing={setIsEditing}
               />
