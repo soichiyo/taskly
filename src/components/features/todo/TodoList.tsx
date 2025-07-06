@@ -7,8 +7,8 @@ interface TodoListProps {
   todos: Todo[];
   selectedFilter: FilterType;
   onToggle: (id: string) => void;
-  onDelete: (id: string) => void;
-  onUpdate: (id: string, updatedData: Partial<Todo>) => void;
+  // onDelete: (id: string) => void;
+  // onUpdate: (id: string, updatedData: Partial<Todo>) => void;
   onOpenModal: (todo: Todo) => void;
   todoModal: React.ReactNode;
 }
@@ -17,8 +17,6 @@ export const TodoList = ({
   todos,
   selectedFilter,
   onToggle,
-  onDelete,
-  onUpdate,
   onOpenModal,
   todoModal,
 }: TodoListProps) => {
@@ -46,8 +44,6 @@ export const TodoList = ({
                 todo={item}
                 onToggle={onToggle}
                 onOpenModal={onOpenModal}
-                onDelete={onDelete}
-                onUpdate={onUpdate}
               />
             </li>
           ))}

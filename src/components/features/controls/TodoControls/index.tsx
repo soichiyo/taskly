@@ -1,4 +1,6 @@
+//features/controls/ の責任は「操作パネルのUI」
 //メインコンポーネント（複数の子を統合）
+
 import { FilterSection } from "./FilterSection";
 import { SortSection } from "./SortSection";
 import { SearchSection } from "./SearchSection";

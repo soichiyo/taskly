@@ -1,3 +1,6 @@
+//features/todoの責任は「UIの表示とユーザーインタラクション」
+//Todo詳細・編集UI（モーダルの見た目・フォーム制御・ローカル状態管理）
+
 import { useState } from "react";
 import { Todo, SubTodo } from "@/types/todo";
 import { Button } from "@/components/ui/Button";
@@ -24,7 +27,6 @@ export const TodoModal = ({
   onUpdateTodo,
   onDeleteTodo,
   onAddSubTodo,
-  onUpdateSubTodo,
   onDeleteSubTodo,
   onToggleSubTodo,
 }: TodoModalProps) => {

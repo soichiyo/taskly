@@ -1,3 +1,4 @@
+//features/controls/ の責任は「操作パネルのUI」
 //UIだけを担当するコンポーネント
 
 import { FilterButton } from "@/components/FilterButton.tsx";

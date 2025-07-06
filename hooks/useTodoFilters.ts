@@ -1,3 +1,6 @@
+//hooksの責任は「状態管理と副作用処理」
+// フィルター・ソート・検索の状態管理
+
 import { useState } from "react";
 import { FilterType, Todo } from "../src/types/todo";
 

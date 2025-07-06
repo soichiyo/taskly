@@ -1,19 +1,20 @@
+//features/todoの責任は「UIの表示とユーザーインタラクション」
+//Todo1件の表示UI
+
 import { Todo } from "../../../types/todo";
 
 interface TodoDisplayProps {
   todo: Todo;
   onToggle: (id: string) => void;
   onOpenModal: (todo: Todo) => void;
-  onDelete: (id: string) => void;
-  onUpdate: (id: string, updatedData: Partial<Todo>) => void;
+  // onDelete: (id: string) => void;
+  // onUpdate: (id: string, updatedData: Partial<Todo>) => void;
 }
 
 export const TodoDisplay = ({
   todo,
   onToggle,
   onOpenModal,
-  onDelete,
-  onUpdate,
 }: TodoDisplayProps) => {
   return (
     <div

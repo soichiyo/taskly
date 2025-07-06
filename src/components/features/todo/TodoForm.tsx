@@ -1,11 +1,5 @@
-// TodoForm -> 新しいTodoを作るためのフォーム
-// 自分でフォームの状態を管理する
-// データを作って親に送る
-// TodoForm の責任
-// ✅ フォームの状態管理
-// ✅ ユーザー入力の処理
-// ✅ バリデーション
-// ✅ フォームリセット
+//features/todoの責任は「UIの表示とユーザーインタラクション」
+//Todo作成フォームUI
 
 import { useState } from "react";
 import type { CreateTodoInput } from "@/types/todo";

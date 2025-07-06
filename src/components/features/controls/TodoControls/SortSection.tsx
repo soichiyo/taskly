@@ -1,4 +1,6 @@
+//features/controls/ の責任は「操作パネルのUI」
 //UIだけを担当するコンポーネント
+
 import { Card } from "../../../ui/Card.tsx";
 import { SortButton } from "../../../SortButton.tsx";
 

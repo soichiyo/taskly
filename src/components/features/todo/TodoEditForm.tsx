@@ -1,3 +1,6 @@
+//features/todoの責任は「UIの表示とユーザーインタラクション」
+//Todo編集フォームUI
+
 import { Button } from "../../ui/Button.tsx";
 import { Priority } from "../../../types/todo";
 

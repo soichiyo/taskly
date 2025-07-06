@@ -1,3 +1,6 @@
+//hooksの責任は「状態管理と副作用処理」
+// Todo/SubTodoのCRUD操作
+
 import { useState } from "react";
 import {
   Todo,

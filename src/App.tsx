@@ -68,15 +68,13 @@ export default function App() {
           selectedFilter={selectedFilter}
           onToggle={handleToggle}
           onOpenModal={openModal}
-          onDelete={handleDelete}
-          onUpdate={updateTodo}
           todoModal={
             selectedTodo && ( // ← selectedTodoがnullじゃなければモーダル表示
               <TodoModal
                 todo={selectedTodo}
                 onClose={closeModal}
-                onUpdateTodo={updateTodo} // ← 追加: Todo編集機能
-                onDeleteTodo={handleDelete} // ← 追加: Todo削除機能
+                onUpdateTodo={updateTodo}
+                onDeleteTodo={handleDelete}
                 onAddSubTodo={addSubTodo}
                 onUpdateSubTodo={updateSubTodo}
                 onDeleteSubTodo={deleteSubTodo}
