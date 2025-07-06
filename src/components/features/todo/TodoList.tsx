@@ -1,4 +1,6 @@
-//メインコンポーネント（複数の子を統合）
+//features/todoの責任は「UIの表示とユーザーインタラクション」
+//Todo一覧UI
+
 import type { Todo, FilterType } from "../../../types/todo";
 import { Card } from "../../ui/Card.tsx";
 import { TodoItem } from "./TodoItem";
